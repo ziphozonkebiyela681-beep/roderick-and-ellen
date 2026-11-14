@@ -41,7 +41,12 @@ export const IsolatedEnvelope: React.FC<IsolatedEnvelopeProps> = ({
   const tiltClass =
     tilt === 'left' ? '-rotate-2 hover:rotate-0' : tilt === 'right' ? 'rotate-2 hover:rotate-0' : '';
 
-  const sealSize = size === 'sm' ? 42 : size === 'md' ? 76 : 98;
+  const sealSizeClass =
+    size === 'sm'
+      ? 'h-10 w-10'
+      : size === 'md'
+        ? 'h-16 w-16 sm:h-[76px] sm:w-[76px]'
+        : 'h-[72px] w-[72px] sm:h-[98px] sm:w-[98px]';
 
   return (
     <div
@@ -52,7 +57,7 @@ export const IsolatedEnvelope: React.FC<IsolatedEnvelopeProps> = ({
     >
       {/* Letter card that slides upward out of the envelope when unsealed */}
       {isOpen && (
-        <div className="relative z-10 mx-auto mb-[-38px] w-[90%] rounded-t-xl border border-[#2E083B]/18 bg-[#FAF5E6] px-5 pt-6 pb-11 shadow-sm transition-all duration-300 sm:px-7">
+        <div className="relative z-10 mx-auto mb-[-24px] w-[92%] rounded-t-xl border border-[#2E083B]/18 bg-[#FAF5E6] px-4 pt-5 pb-9 shadow-sm transition-all duration-300 sm:mb-[-38px] sm:w-[90%] sm:px-7 sm:pt-6 sm:pb-11">
           {children ? (
             children
           ) : (
@@ -161,12 +166,12 @@ export const IsolatedEnvelope: React.FC<IsolatedEnvelopeProps> = ({
                 type="button"
                 onClick={onToggleOpen}
                 aria-label="Unseal envelope"
-                className="group relative rounded-full transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2E083B]"
+                className="group relative flex items-center justify-center rounded-full transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2E083B]"
               >
-                <WaxSealEmblem size={sealSize} />
+                <WaxSealEmblem className={`${sealSizeClass} h-auto`} />
               </button>
             ) : (
-              <WaxSealEmblem size={sealSize} />
+              <WaxSealEmblem className={`${sealSizeClass} h-auto`} />
             )}
           </div>
         )}
@@ -176,7 +181,7 @@ export const IsolatedEnvelope: React.FC<IsolatedEnvelopeProps> = ({
           <button
             type="button"
             onClick={onToggleOpen}
-            className="absolute top-3 right-3 z-30 rounded-md border border-[#2E083B]/20 bg-[#FAF5E6]/90 px-2.5 py-1 text-[11px] font-medium text-[#2E083B] transition-colors hover:bg-[#2E083B] hover:text-[#F3E178] cursor-pointer"
+            className="absolute top-2.5 right-2.5 z-30 rounded-md border border-[#2E083B]/20 bg-[#FAF5E6]/95 px-2.5 py-1 text-[11px] font-medium text-[#2E083B] transition-colors hover:bg-[#2E083B] hover:text-[#F3E178] sm:top-3 sm:right-3 cursor-pointer"
           >
             Seal Envelope
           </button>
@@ -184,7 +189,7 @@ export const IsolatedEnvelope: React.FC<IsolatedEnvelopeProps> = ({
 
         {/* Subtle centered plum serif wordmark along bottom of envelope */}
         {size !== 'sm' && (
-          <p className="pointer-events-none absolute inset-x-0 bottom-3 text-center font-display text-[10px] font-medium tracking-[0.28em] text-[#491C59]/85 sm:text-[11px]">
+          <p className="pointer-events-none absolute inset-x-3 bottom-2.5 truncate text-center font-display text-[9px] font-medium tracking-[0.24em] text-[#491C59]/85 sm:bottom-3 sm:text-[11px] sm:tracking-[0.28em]">
             {footerStamp}
           </p>
         )}

@@ -22,10 +22,12 @@
 }
 
 @layer base {
-  html {
+  html,
+  body {
     font-family: var(--font-sans);
     color: var(--color-plum-900);
     background-color: var(--color-butter-400);
+    overflow-x: clip;
   }
 
   h1,

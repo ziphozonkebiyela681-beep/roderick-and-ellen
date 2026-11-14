@@ -132,23 +132,23 @@ const WeddingZoomLab: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#2E083B]/12 pb-4">
-        <div className="inline-flex rounded-lg bg-[#F3E178]/55 p-1">
+      <div className="flex flex-col gap-3 border-b border-[#2E083B]/12 pb-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-4">
+        <div className="grid w-full grid-cols-1 gap-1 rounded-lg bg-[#F3E178]/55 p-1 sm:inline-flex sm:w-auto">
           <button
             type="button"
             onClick={() => setSubTab('invitation')}
-            className={`rounded-md px-3.5 py-1.5 text-xs font-semibold transition-colors duration-150 whitespace-nowrap shrink-0 cursor-pointer ${
+            className={`min-h-[40px] rounded-md px-3.5 py-2 text-xs font-semibold transition-colors duration-150 cursor-pointer ${
               subTab === 'invitation'
                 ? 'bg-[#2E083B] text-[#F3E178]'
                 : 'text-[#2E083B] hover:bg-[#FAF5E6]/70'
             }`}
           >
-            Interactive Sealed Invitation &amp; RSVP
+            Sealed Invitation &amp; RSVP
           </button>
           <button
             type="button"
             onClick={() => setSubTab('gallery')}
-            className={`rounded-md px-3.5 py-1.5 text-xs font-semibold transition-colors duration-150 whitespace-nowrap shrink-0 cursor-pointer ${
+            className={`min-h-[40px] rounded-md px-3.5 py-2 text-xs font-semibold transition-colors duration-150 cursor-pointer ${
               subTab === 'gallery'
                 ? 'bg-[#2E083B] text-[#F3E178]'
                 : 'text-[#2E083B] hover:bg-[#FAF5E6]/70'
@@ -166,9 +166,9 @@ const WeddingZoomLab: React.FC = () => {
       </div>
 
       {subTab === 'invitation' ? (
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-12">
           {/* Isolated Envelope Opener resting on signature Butter Yellow */}
-          <div className="lg:col-span-7 flex flex-col items-center justify-center rounded-2xl border border-[#2E083B]/15 bg-[#F3E178] p-6 sm:p-8">
+          <div className="lg:col-span-7 flex flex-col items-center justify-center rounded-2xl border border-[#2E083B]/15 bg-[#F3E178] p-4 sm:p-8">
             <IsolatedEnvelope
               size="lg"
               isOpen={isOpened}
@@ -185,7 +185,7 @@ const WeddingZoomLab: React.FC = () => {
                 <p className="mt-2 text-[11px] uppercase tracking-[0.2em] text-[#491C59]">
                   Together with their families
                 </p>
-                <h4 className="mt-1 font-display text-3xl font-semibold text-[#2E083B]">
+                <h4 className="mt-1 font-display text-2xl font-semibold text-[#2E083B] sm:text-3xl">
                   {coupleNames || 'Claire & Julian'}
                 </h4>
                 <p className="mt-1 text-xs text-[#491C59]">
@@ -207,18 +207,18 @@ const WeddingZoomLab: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setRsvpSubmitted(false)}
-                        className="mt-2 text-[11px] font-medium text-[#2E083B] underline underline-offset-4 cursor-pointer"
+                        className="mt-2 min-h-[36px] text-[11px] font-medium text-[#2E083B] underline underline-offset-4 cursor-pointer"
                       >
                         Edit RSVP Response
                       </button>
                     </div>
                   ) : (
                     <form onSubmit={handleRsvpSubmit} className="space-y-2.5">
-                      <div className="grid grid-cols-2 gap-2">
+                      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                         <button
                           type="button"
                           onClick={() => setRsvpStatus('attending')}
-                          className={`rounded-lg border px-2.5 py-2 text-[11px] font-semibold transition-colors cursor-pointer ${
+                          className={`min-h-[40px] rounded-lg border px-2.5 py-2 text-[11px] font-semibold transition-colors cursor-pointer ${
                             rsvpStatus === 'attending'
                               ? 'border-[#2E083B] bg-[#2E083B] text-[#F3E178]'
                               : 'border-[#2E083B]/20 text-[#2E083B]'
@@ -229,7 +229,7 @@ const WeddingZoomLab: React.FC = () => {
                         <button
                           type="button"
                           onClick={() => setRsvpStatus('declined')}
-                          className={`rounded-lg border px-2.5 py-2 text-[11px] font-semibold transition-colors cursor-pointer ${
+                          className={`min-h-[40px] rounded-lg border px-2.5 py-2 text-[11px] font-semibold transition-colors cursor-pointer ${
                             rsvpStatus === 'declined'
                               ? 'border-[#2E083B] bg-[#2E083B] text-[#F3E178]'
                               : 'border-[#2E083B]/20 text-[#2E083B]'
@@ -245,7 +245,7 @@ const WeddingZoomLab: React.FC = () => {
                             value={guestCount}
                             onChange={(e) => setGuestCount(e.target.value)}
                             aria-label="Number of guests"
-                            className="rounded-lg border border-[#2E083B]/20 bg-white px-2.5 py-1.5 text-xs text-[#2E083B]"
+                            className="min-h-[40px] rounded-lg border border-[#2E083B]/20 bg-white px-2.5 py-1.5 text-base text-[#2E083B] sm:text-xs"
                           >
                             <option value="1 Guest">1 Guest</option>
                             <option value="2 Guests">2 Guests</option>
@@ -256,14 +256,14 @@ const WeddingZoomLab: React.FC = () => {
                             value={dietaryNote}
                             onChange={(e) => setDietaryNote(e.target.value)}
                             placeholder="Dietary notes (optional)"
-                            className="rounded-lg border border-[#2E083B]/20 bg-white px-2.5 py-1.5 text-xs text-[#2E083B] placeholder:text-[#491C59]/60"
+                            className="min-h-[40px] rounded-lg border border-[#2E083B]/20 bg-white px-2.5 py-1.5 text-base text-[#2E083B] placeholder:text-[#491C59]/60 sm:text-xs"
                           />
                         </div>
                       )}
 
                       <button
                         type="submit"
-                        className="w-full rounded-lg bg-[#2E083B] py-2 text-xs font-semibold text-[#F3E178] transition-colors hover:bg-[#3D104E] cursor-pointer"
+                        className="min-h-[44px] w-full rounded-lg bg-[#2E083B] py-2 text-xs font-semibold text-[#F3E178] transition-colors hover:bg-[#3D104E] cursor-pointer"
                       >
                         Submit Sample RSVP
                       </button>
@@ -277,7 +277,7 @@ const WeddingZoomLab: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setIsOpened(true)}
-                className="mt-6 inline-flex min-h-[42px] items-center gap-2 rounded-lg bg-[#2E083B] px-5 py-2 text-xs font-semibold text-[#F3E178] transition-colors duration-150 hover:bg-[#3D104E] cursor-pointer"
+                className="mt-5 inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-lg bg-[#2E083B] px-5 py-2.5 text-xs font-semibold text-[#F3E178] transition-colors duration-150 hover:bg-[#3D104E] sm:mt-6 sm:w-auto cursor-pointer"
               >
                 Break Wax Seal &amp; Open Invitation
               </button>
@@ -285,7 +285,7 @@ const WeddingZoomLab: React.FC = () => {
           </div>
 
           {/* Personalization Controls */}
-          <div className="flex flex-col justify-between rounded-2xl border border-[#2E083B]/15 bg-[#2E083B] p-6 text-[#FAF5E6] lg:col-span-5">
+          <div className="flex flex-col justify-between rounded-2xl border border-[#2E083B]/15 bg-[#2E083B] p-5 text-[#FAF5E6] sm:p-6 lg:col-span-5">
             <div className="space-y-4">
               <h4 className="font-display text-2xl font-semibold text-[#F3E178]">
                 Personalize Sample Invitation
@@ -303,7 +303,7 @@ const WeddingZoomLab: React.FC = () => {
                     type="text"
                     value={coupleNames}
                     onChange={(e) => setCoupleNames(e.target.value)}
-                    className="mt-1 w-full rounded-lg border border-[#F3E178]/25 bg-[#3B104B] px-3 py-2 text-sm text-[#FAF5E6]"
+                    className="mt-1 w-full rounded-lg border border-[#F3E178]/25 bg-[#3B104B] px-3 py-2 text-base text-[#FAF5E6] sm:text-sm"
                   />
                 </div>
                 <div>
@@ -312,7 +312,7 @@ const WeddingZoomLab: React.FC = () => {
                     type="text"
                     value={weddingDate}
                     onChange={(e) => setWeddingDate(e.target.value)}
-                    className="mt-1 w-full rounded-lg border border-[#F3E178]/25 bg-[#3B104B] px-3 py-2 text-sm text-[#FAF5E6]"
+                    className="mt-1 w-full rounded-lg border border-[#F3E178]/25 bg-[#3B104B] px-3 py-2 text-base text-[#FAF5E6] sm:text-sm"
                   />
                 </div>
                 <div>
@@ -321,7 +321,7 @@ const WeddingZoomLab: React.FC = () => {
                     type="text"
                     value={venueName}
                     onChange={(e) => setVenueName(e.target.value)}
-                    className="mt-1 w-full rounded-lg border border-[#F3E178]/25 bg-[#3B104B] px-3 py-2 text-sm text-[#FAF5E6]"
+                    className="mt-1 w-full rounded-lg border border-[#F3E178]/25 bg-[#3B104B] px-3 py-2 text-base text-[#FAF5E6] sm:text-sm"
                   />
                 </div>
               </div>
@@ -362,19 +362,19 @@ const WeddingZoomLab: React.FC = () => {
               role="dialog"
               aria-modal="true"
               aria-label={`Gallery inspection: ${selectedFrame.title}`}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-[#240530]/90 p-6 backdrop-blur-sm"
+              className="fixed inset-0 z-50 flex items-center justify-center bg-[#240530]/90 p-3 sm:p-6 backdrop-blur-sm"
               onClick={() => setSelectedFrame(null)}
             >
               <div
-                className="relative w-full max-w-xl rounded-2xl border border-[#F3E178]/35 bg-[#FAF5E6] p-6"
+                className="relative w-full max-w-xl rounded-2xl border border-[#F3E178]/35 bg-[#FAF5E6] p-4 sm:p-6"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="flex items-center justify-between pb-4">
+                <div className="flex items-center justify-between gap-3 pb-4">
                   <div>
                     <p className="text-xs text-[#491C59]">
                       {selectedFrame.aspectLabel} · {selectedFrame.location}
                     </p>
-                    <h4 className="font-display text-2xl font-semibold text-[#2E083B]">
+                    <h4 className="font-display text-xl font-semibold text-[#2E083B] sm:text-2xl">
                       {selectedFrame.title}
                     </h4>
                   </div>
@@ -382,7 +382,7 @@ const WeddingZoomLab: React.FC = () => {
                     type="button"
                     onClick={() => setSelectedFrame(null)}
                     aria-label="Close gallery preview"
-                    className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#2E083B]/20 text-[#2E083B] hover:bg-[#F3E178] cursor-pointer"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[#2E083B]/20 text-[#2E083B] hover:bg-[#F3E178] sm:h-10 sm:w-10 cursor-pointer"
                   >
                     <X className="h-4 w-4" />
                   </button>
@@ -447,7 +447,7 @@ const LogoIdentityZoomLab: React.FC = () => {
       {/* Live Specimen Board */}
       <div className="lg:col-span-7 space-y-4">
         <div
-          className={`relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#2E083B]/15 p-8 transition-colors duration-200 ${current.bg}`}
+          className={`relative flex min-h-[280px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#2E083B]/15 p-5 transition-colors duration-200 sm:min-h-[340px] sm:p-8 ${current.bg}`}
         >
           {showGrid && (
             <div
@@ -462,14 +462,14 @@ const LogoIdentityZoomLab: React.FC = () => {
 
           <div className="relative z-10 flex flex-col items-center text-center">
             <div className="relative">
-              <WaxSealEmblem size={120} variant={current.sealVariant} />
+              <WaxSealEmblem className="h-24 w-24 sm:h-[120px] sm:w-[120px]" variant={current.sealVariant} />
               {showGrid && (
                 <div className="pointer-events-none absolute -inset-3 rounded-full border border-dashed border-current opacity-35" />
               )}
             </div>
 
             <p
-              className={`mt-6 font-display text-2xl font-semibold tracking-[0.14em] sm:text-3xl ${current.text}`}
+              className={`mt-5 font-display text-xl font-semibold tracking-[0.12em] sm:mt-6 sm:text-3xl sm:tracking-[0.14em] ${current.text}`}
             >
               {brandTitle.toUpperCase() || 'RODERICK & ELLEN'}
             </p>
@@ -478,30 +478,30 @@ const LogoIdentityZoomLab: React.FC = () => {
         </div>
 
         {/* Scale & Application Stress Tests */}
-        <div className="grid grid-cols-3 gap-3">
-          <div className="rounded-xl border border-[#2E083B]/15 bg-[#F3E178]/45 p-4 text-center">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3">
+          <div className="rounded-xl border border-[#2E083B]/15 bg-[#F3E178]/45 p-2.5 text-center sm:p-4">
             <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-lg bg-[#2E083B] text-xs font-display font-bold text-[#F3E178]">
               RE
             </div>
-            <p className="mt-2 text-xs font-semibold text-[#2E083B]">16–32px App Icon</p>
+            <p className="mt-2 text-[11px] font-semibold text-[#2E083B] sm:text-xs">App Icon</p>
           </div>
-          <div className="rounded-xl border border-[#2E083B]/15 bg-[#F3E178]/45 p-4 text-center">
+          <div className="rounded-xl border border-[#2E083B]/15 bg-[#F3E178]/45 p-2.5 text-center sm:p-4">
             <div className="mx-auto flex h-10 w-10 items-center justify-center">
               <WaxSealEmblem size={40} />
             </div>
-            <p className="mt-2 text-xs font-semibold text-[#2E083B]">Wax &amp; Foil Stamp</p>
+            <p className="mt-2 text-[11px] font-semibold text-[#2E083B] sm:text-xs">Wax Stamp</p>
           </div>
-          <div className="rounded-xl border border-[#2E083B]/15 bg-[#F3E178]/45 p-4 text-center">
+          <div className="rounded-xl border border-[#2E083B]/15 bg-[#F3E178]/45 p-2.5 text-center sm:p-4">
             <p className="flex h-10 items-center justify-center font-display text-sm font-semibold tracking-wider text-[#2E083B]">
               R &amp; E
             </p>
-            <p className="mt-2 text-xs font-semibold text-[#2E083B]">Header Wordmark</p>
+            <p className="mt-2 text-[11px] font-semibold text-[#2E083B] sm:text-xs">Wordmark</p>
           </div>
         </div>
       </div>
 
       {/* Inspector Controls & Circularly Isolated Wax Reference */}
-      <div className="flex flex-col justify-between rounded-2xl border border-[#2E083B]/15 bg-[#2E083B] p-6 text-[#FAF5E6] lg:col-span-5">
+      <div className="flex flex-col justify-between rounded-2xl border border-[#2E083B]/15 bg-[#2E083B] p-5 text-[#FAF5E6] sm:p-6 lg:col-span-5">
         <div className="space-y-5">
           <div>
             <h4 className="font-display text-2xl font-semibold text-[#F3E178]">
@@ -521,7 +521,7 @@ const LogoIdentityZoomLab: React.FC = () => {
                   key={key}
                   type="button"
                   onClick={() => setSurface(key)}
-                  className={`rounded-lg border px-3 py-2 text-left text-xs font-semibold transition-colors cursor-pointer ${
+                  className={`min-h-[40px] rounded-lg border px-3 py-2 text-left text-xs font-semibold transition-colors cursor-pointer ${
                     surface === key
                       ? 'border-[#F3E178] bg-[#F3E178] text-[#2E083B]'
                       : 'border-[#F3E178]/25 bg-[#3B104B] text-[#FAF5E6] hover:border-[#F3E178]/60'
@@ -538,7 +538,7 @@ const LogoIdentityZoomLab: React.FC = () => {
             <button
               type="button"
               onClick={() => setShowGrid((prev) => !prev)}
-              className={`rounded-md px-3 py-1 text-xs font-semibold cursor-pointer ${
+              className={`min-h-[36px] rounded-md px-3 py-1 text-xs font-semibold cursor-pointer ${
                 showGrid ? 'bg-[#F3E178] text-[#2E083B]' : 'bg-[#2E083B] text-[#F3E178]'
               }`}
             >
@@ -554,7 +554,7 @@ const LogoIdentityZoomLab: React.FC = () => {
               type="text"
               value={brandTitle}
               onChange={(e) => setBrandTitle(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-[#F3E178]/25 bg-[#3B104B] px-3 py-2 text-sm text-[#FAF5E6]"
+              className="mt-1 w-full rounded-lg border border-[#F3E178]/25 bg-[#3B104B] px-3 py-2 text-base text-[#FAF5E6] sm:text-sm"
             />
           </div>
         </div>
@@ -629,8 +629,8 @@ const AgentZoomLab: React.FC = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-      <div className="flex flex-col justify-between rounded-2xl border border-[#2E083B]/15 bg-[#2E083B] p-6 text-[#FAF5E6] lg:col-span-5">
+    <div className="grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-12">
+      <div className="flex flex-col justify-between rounded-2xl border border-[#2E083B]/15 bg-[#2E083B] p-5 text-[#FAF5E6] sm:p-6 lg:col-span-5">
         <div>
           <h4 className="font-display text-2xl font-semibold text-[#F3E178]">
             Select Client Deployment
@@ -671,7 +671,7 @@ const AgentZoomLab: React.FC = () => {
                   key={prompt.label}
                   type="button"
                   onClick={() => handleQuickPrompt(prompt)}
-                  className="rounded-lg border border-[#F3E178]/25 bg-[#3B104B] px-3 py-2 text-left text-xs font-medium text-[#FAF5E6] transition-colors hover:border-[#F3E178] hover:bg-[#F3E178] hover:text-[#2E083B] cursor-pointer"
+                  className="min-h-[40px] rounded-lg border border-[#F3E178]/25 bg-[#3B104B] px-3 py-2 text-left text-xs font-medium text-[#FAF5E6] transition-colors hover:border-[#F3E178] hover:bg-[#F3E178] hover:text-[#2E083B] cursor-pointer"
                 >
                   {prompt.label}
                 </button>
@@ -682,33 +682,33 @@ const AgentZoomLab: React.FC = () => {
       </div>
 
       <div className="flex flex-col justify-between rounded-2xl border border-[#2E083B]/15 bg-[#FAF5E6] lg:col-span-7">
-        <div className="flex items-center justify-between border-b border-[#2E083B]/12 bg-[#F3E178]/65 px-5 py-3.5 rounded-t-2xl">
-          <div>
-            <p className="text-sm font-semibold text-[#2E083B]">{scenario.companyName} Agent</p>
-            <p className="text-xs text-[#491C59]">{scenario.roleTitle}</p>
+        <div className="flex items-center justify-between gap-2 border-b border-[#2E083B]/12 bg-[#F3E178]/65 px-4 py-3.5 rounded-t-2xl sm:px-5">
+          <div className="min-w-0">
+            <p className="truncate text-sm font-semibold text-[#2E083B]">{scenario.companyName} Agent</p>
+            <p className="truncate text-xs text-[#491C59]">{scenario.roleTitle}</p>
           </div>
           <button
             type="button"
             onClick={() => setMessages([{ sender: 'agent', text: scenario.greeting }])}
-            className="text-xs font-semibold text-[#2E083B] underline underline-offset-4 cursor-pointer"
+            className="shrink-0 text-xs font-semibold text-[#2E083B] underline underline-offset-4 cursor-pointer"
           >
             Reset Chat
           </button>
         </div>
 
-        <div className="flex-1 space-y-4 overflow-y-auto p-5 max-h-[340px]">
+        <div className="flex-1 space-y-4 overflow-y-auto p-4 max-h-[320px] sm:max-h-[340px] sm:p-5">
           {messages.map((msg, i) => (
             <div
               key={`${msg.sender}-${i}`}
               className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
             >
               {msg.toolCall && (
-                <div className="mb-1.5 max-w-[90%] rounded-md border border-[#2E083B]/15 bg-[#F3E178]/50 px-2.5 py-1 font-mono text-[11px] text-[#2E083B]">
+                <div className="mb-1.5 max-w-full break-all rounded-md border border-[#2E083B]/15 bg-[#F3E178]/50 px-2.5 py-1 font-mono text-[11px] text-[#2E083B]">
                   Tool call: {msg.toolCall}
                 </div>
               )}
               <div
-                className={`max-w-[85%] rounded-xl px-4 py-3 text-xs leading-relaxed sm:text-sm ${
+                className={`max-w-[90%] rounded-xl px-3.5 py-2.5 text-xs leading-relaxed sm:max-w-[85%] sm:px-4 sm:py-3 sm:text-sm ${
                   msg.sender === 'user'
                     ? 'bg-[#2E083B] text-[#F3E178]'
                     : 'border border-[#2E083B]/12 bg-[#EFE4CA]/70 text-[#2E083B]'
@@ -722,19 +722,19 @@ const AgentZoomLab: React.FC = () => {
 
         <form
           onSubmit={handleSendCustom}
-          className="flex items-center gap-2 border-t border-[#2E083B]/12 p-4"
+          className="flex items-center gap-2 border-t border-[#2E083B]/12 p-3 sm:p-4"
         >
           <input
             type="text"
             value={customInput}
             onChange={(e) => setCustomInput(e.target.value)}
-            placeholder={`Ask ${scenario.companyName}'s agent a question...`}
-            className="flex-1 rounded-lg border border-[#2E083B]/20 bg-white px-3.5 py-2.5 text-xs text-[#2E083B] placeholder:text-[#491C59]/60 sm:text-sm"
+            placeholder={`Ask ${scenario.companyName}'s agent...`}
+            className="min-w-0 flex-1 rounded-lg border border-[#2E083B]/20 bg-white px-3 py-2.5 text-base text-[#2E083B] placeholder:text-[#491C59]/60 sm:px-3.5 sm:text-sm"
           />
           <button
             type="submit"
             aria-label="Send test message"
-            className="inline-flex h-10 items-center gap-1.5 rounded-lg bg-[#2E083B] px-4 text-xs font-semibold text-[#F3E178] transition-colors hover:bg-[#3D104E] shrink-0 cursor-pointer"
+            className="inline-flex h-11 items-center gap-1.5 rounded-lg bg-[#2E083B] px-3.5 text-xs font-semibold text-[#F3E178] transition-colors hover:bg-[#3D104E] shrink-0 sm:h-10 sm:px-4 cursor-pointer"
           >
             <span>Send</span>
             <Send className="h-3.5 w-3.5" />
@@ -819,23 +819,23 @@ const WebsiteZoomLab: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex justify-center rounded-2xl border border-[#2E083B]/15 bg-[#2E083B] p-4 sm:p-6">
+      <div className="flex justify-center rounded-2xl border border-[#2E083B]/15 bg-[#2E083B] p-3 sm:p-6">
         <div
-          className={`mx-auto overflow-hidden rounded-xl border border-[#F3E178]/30 bg-[#FAF5E6] transition-all duration-200 ${widthClass}`}
+          className={`mx-auto w-full overflow-hidden rounded-xl border border-[#F3E178]/30 bg-[#FAF5E6] transition-all duration-200 ${widthClass}`}
         >
-          <div className="flex items-center justify-between border-b border-[#2E083B]/12 bg-[#EFE4CA] px-4 py-2.5">
-            <span className="font-mono text-[11px] text-[#491C59]">
+          <div className="flex flex-col items-start gap-1 border-b border-[#2E083B]/12 bg-[#EFE4CA] px-3.5 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:px-4">
+            <span className="max-w-full truncate font-mono text-[11px] text-[#491C59]">
               https://{blueprint.clientName.toLowerCase().replace(/[^a-z0-9]/g, '')}.com
             </span>
             <span className="text-[11px] font-semibold text-[#2E083B]">{blueprint.sector}</span>
           </div>
 
-          <div className="flex items-center justify-between border-b border-[#2E083B]/10 px-5 py-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#2E083B]/10 px-4 py-3 sm:px-5">
             <span className="font-display text-lg font-semibold text-[#2E083B]">
               {blueprint.clientName}
             </span>
             {viewport !== 'mobile' && (
-              <div className="flex items-center gap-4 text-xs text-[#491C59]">
+              <div className="hidden sm:flex items-center gap-4 text-xs text-[#491C59]">
                 {blueprint.navigation.map((n) => (
                   <span key={n}>{n}</span>
                 ))}
@@ -846,7 +846,7 @@ const WebsiteZoomLab: React.FC = () => {
             </span>
           </div>
 
-          <div className="bg-[#F3E178] px-5 py-8 sm:px-8">
+          <div className="bg-[#F3E178] px-4 py-6 sm:px-8 sm:py-8">
             <h4 className="max-w-lg font-display text-2xl font-semibold text-[#2E083B] sm:text-3xl">
               {blueprint.headline}
             </h4>
@@ -855,7 +855,7 @@ const WebsiteZoomLab: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-3 p-5 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 p-4 sm:grid-cols-3 sm:p-5">
             {blueprint.sections.map((sec, idx) => (
               <button
                 key={sec.label}
@@ -948,8 +948,8 @@ export const ServiceZoomStudio: React.FC<ServiceZoomStudioProps> = ({
   };
 
   const studioBody = (inModal: boolean) => (
-    <div className="rounded-2xl border border-[#2E083B]/20 bg-[#FAF5E6] p-5 sm:p-8 shadow-sm">
-      <div className="flex flex-col justify-between gap-5 border-b border-[#2E083B]/12 pb-6 lg:flex-row lg:items-center">
+    <div className="rounded-2xl border border-[#2E083B]/20 bg-[#FAF5E6] p-4 sm:p-8 shadow-sm">
+      <div className="flex flex-col justify-between gap-4 border-b border-[#2E083B]/12 pb-5 sm:gap-5 sm:pb-6 lg:flex-row lg:items-center">
         <div>
           <p className="font-mono text-xs font-medium text-[#491C59] tabular-nums">
             Service {currentService.index} of 04 · Interactive Zoom
@@ -959,11 +959,11 @@ export const ServiceZoomStudio: React.FC<ServiceZoomStudioProps> = ({
           </h3>
         </div>
 
-        <div className="flex items-center gap-2 self-start lg:self-auto">
+        <div className="flex w-full items-center gap-2 sm:w-auto">
           <button
             type="button"
             onClick={() => onRequestService(currentService.id)}
-            className="inline-flex min-h-[40px] items-center rounded-lg bg-[#2E083B] px-4 py-2 text-xs font-semibold text-[#F3E178] transition-colors hover:bg-[#3D104E] whitespace-nowrap shrink-0 cursor-pointer"
+            className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-lg bg-[#2E083B] px-4 py-2 text-xs font-semibold text-[#F3E178] transition-colors hover:bg-[#3D104E] whitespace-nowrap sm:min-h-[40px] sm:flex-none cursor-pointer"
           >
             Commission This Service
           </button>
@@ -971,7 +971,7 @@ export const ServiceZoomStudio: React.FC<ServiceZoomStudioProps> = ({
             type="button"
             onClick={() => onToggleFullscreenModal(!inModal)}
             aria-label={inModal ? 'Exit fullscreen zoom' : 'Expand fullscreen zoom'}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#2E083B]/25 text-[#2E083B] transition-colors hover:bg-[#F3E178] cursor-pointer"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[#2E083B]/25 text-[#2E083B] transition-colors hover:bg-[#F3E178] sm:h-10 sm:w-10 cursor-pointer"
           >
             {inModal ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
           </button>
@@ -991,7 +991,7 @@ export const ServiceZoomStudio: React.FC<ServiceZoomStudioProps> = ({
             role="tab"
             aria-selected={svc.id === activeService}
             onClick={() => onSelectService(svc.id)}
-            className={`flex items-center justify-between rounded-xl border px-4 py-3 text-left transition-colors duration-150 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#2E083B] ${
+            className={`flex min-h-[44px] items-center justify-between rounded-xl border px-4 py-2.5 text-left transition-colors duration-150 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#2E083B] ${
               svc.id === activeService
                 ? 'border-[#2E083B] bg-[#2E083B] text-[#F3E178]'
                 : 'border-[#2E083B]/15 bg-[#F3E178]/45 text-[#2E083B] hover:bg-[#F3E178]'
@@ -1004,14 +1004,14 @@ export const ServiceZoomStudio: React.FC<ServiceZoomStudioProps> = ({
         ))}
       </div>
 
-      <div className="mt-7">{renderLabContent()}</div>
+      <div className="mt-6 sm:mt-7">{renderLabContent()}</div>
     </div>
   );
 
   return (
-    <section id="zoom-studio" className="border-b border-[#2E083B]/15 bg-[#F3E178] py-16 lg:py-24">
-      <div className="mx-auto max-w-[1200px] px-6">
-        <div className="mb-8 max-w-2xl">
+    <section id="zoom-studio" className="border-b border-[#2E083B]/15 bg-[#F3E178] py-12 sm:py-16 lg:py-24">
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="mb-6 max-w-2xl sm:mb-8">
           <p className="text-sm font-semibold text-[#491C59]">Interactive Service Zoom</p>
           <h2
             className="mt-2 font-display text-3xl font-semibold tracking-tight text-[#2E083B] sm:text-4xl"
@@ -1029,7 +1029,7 @@ export const ServiceZoomStudio: React.FC<ServiceZoomStudioProps> = ({
           role="dialog"
           aria-modal="true"
           aria-label={`Fullscreen zoom: ${currentService.title}`}
-          className="fixed inset-0 z-50 overflow-y-auto bg-[#240530]/90 p-4 sm:p-8 backdrop-blur-sm"
+          className="fixed inset-0 z-50 overflow-y-auto bg-[#240530]/90 p-3 sm:p-8 backdrop-blur-sm"
           onClick={() => onToggleFullscreenModal(false)}
         >
           <div className="mx-auto max-w-[1200px]" onClick={(e) => e.stopPropagation()}>

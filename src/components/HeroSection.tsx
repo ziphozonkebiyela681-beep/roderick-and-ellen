@@ -14,37 +14,37 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onZoomService, onNavig
 
   return (
     <section id="top" className="border-b border-[#2E083B]/15 bg-[#F3E178]">
-      <div className="mx-auto max-w-[1200px] px-6 pt-12 pb-12 lg:pt-16 lg:pb-16">
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
+      <div className="mx-auto max-w-[1200px] px-4 pt-8 pb-10 sm:px-6 sm:pt-12 sm:pb-12 lg:pt-16 lg:pb-16">
+        <div className="grid grid-cols-1 items-center gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-12">
           {/* Left Typographic Anchor */}
           <div className="flex flex-col justify-between lg:col-span-6">
             <div>
-              <p className="text-sm font-semibold text-[#491C59]">
+              <p className="text-xs font-semibold text-[#491C59] sm:text-sm">
                 Roderick &amp; Ellen · Invitations, Identity &amp; Intelligent Systems
               </p>
 
               <h1
-                className="mt-4 font-display font-semibold tracking-tight text-[#2E083B]"
+                className="mt-3 font-display font-semibold tracking-tight text-[#2E083B] sm:mt-4"
                 style={{
-                  fontSize: 'clamp(2.4rem, 4.2vw, 3.85rem)',
-                  lineHeight: 1.05,
+                  fontSize: 'clamp(2.05rem, 4.2vw, 3.85rem)',
+                  lineHeight: 1.06,
                   textWrap: 'balance',
                 }}
               >
                 Sealed invitations, brand logos, and intelligent systems for companies.
               </h1>
 
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-[#3D104E]">
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#3D104E] sm:mt-6 sm:text-base">
                 Built around our signature butter-yellow, royal purple, and cotton-envelope identity,
                 we craft personalized digital wedding invitations &amp; photo galleries, create logos,
                 engineer company chatbots and AI agents, and build bespoke corporate websites.
               </p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-5">
+              <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                 <button
                   type="button"
                   onClick={() => onNavigate('zoom-studio')}
-                  className="inline-flex min-h-[46px] items-center gap-2 rounded-lg bg-[#2E083B] px-6 py-3 text-sm font-semibold text-[#F3E178] transition-colors duration-150 hover:bg-[#3D104E] whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2E083B]"
+                  className="inline-flex min-h-[46px] w-full items-center justify-center gap-2 rounded-lg bg-[#2E083B] px-6 py-3 text-sm font-semibold text-[#F3E178] transition-colors duration-150 hover:bg-[#3D104E] whitespace-nowrap shrink-0 sm:w-auto cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2E083B]"
                 >
                   <ZoomIn className="h-4 w-4" />
                   <span>Zoom Into Services</span>
@@ -53,7 +53,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onZoomService, onNavig
                 <button
                   type="button"
                   onClick={() => setHeroEnvelopeOpen((prev) => !prev)}
-                  className="inline-flex min-h-[46px] items-center gap-1.5 rounded-lg border border-[#2E083B]/30 bg-[#FAF5E6]/75 px-4 py-3 text-sm font-medium text-[#2E083B] transition-colors duration-150 hover:bg-[#FAF5E6] whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#2E083B]"
+                  className="inline-flex min-h-[46px] w-full items-center justify-center gap-1.5 rounded-lg border border-[#2E083B]/30 bg-[#FAF5E6]/80 px-4 py-3 text-sm font-medium text-[#2E083B] transition-colors duration-150 hover:bg-[#FAF5E6] whitespace-nowrap shrink-0 sm:w-auto cursor-pointer focus-visible:outline-2 focus-visible:outline-[#2E083B]"
                 >
                   <span>{heroEnvelopeOpen ? 'Seal Studio Envelope' : 'Unseal Studio Envelope'}</span>
                   <ArrowDownRight className="h-4 w-4" />
@@ -62,42 +62,43 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onZoomService, onNavig
             </div>
 
             {/* Subtle Brand Signature Row */}
-            <div className="mt-10 flex items-center gap-4 border-t border-[#2E083B]/15 pt-6">
-              <WaxSealEmblem size={46} className="shrink-0" />
+            <div className="mt-8 flex items-center gap-3.5 border-t border-[#2E083B]/15 pt-5 sm:mt-10 sm:gap-4 sm:pt-6">
+              <WaxSealEmblem size={44} className="shrink-0" />
               <div>
                 <p className="text-sm font-semibold text-[#2E083B]">
                   Signature Crowned R|E Wax Crest
                 </p>
                 <p className="text-xs text-[#491C59]">
-                  Click the wax seal on the envelope to unseal our studio dispatch.
+                  Tap the wax seal on the envelope to unseal our studio dispatch.
                 </p>
               </div>
             </div>
           </div>
 
           {/* Right Standalone Isolated Envelope Floating Directly on Yellow Canvas */}
-          <div className="flex flex-col items-center justify-center lg:col-span-6">
+          <div className="flex flex-col items-center justify-center pt-2 lg:col-span-6 lg:pt-0">
             <IsolatedEnvelope
               size="lg"
-              tilt="left"
+              tilt="none"
               isOpen={heroEnvelopeOpen}
               onToggleOpen={() => setHeroEnvelopeOpen((prev) => !prev)}
               footerStamp="RODERICK & ELLEN"
+              className="lg:-rotate-2 lg:hover:rotate-0"
             >
               <div className="text-center">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#491C59]">
                   Studio Dispatch
                 </p>
-                <h2 className="mt-1 font-display text-2xl font-semibold text-[#2E083B]">
+                <h2 className="mt-1 font-display text-xl font-semibold text-[#2E083B] sm:text-2xl">
                   Four Bespoke Disciplines
                 </h2>
-                <div className="mt-4 grid grid-cols-2 gap-2 text-left">
+                <div className="mt-3 grid grid-cols-1 gap-2 text-left sm:mt-4 sm:grid-cols-2">
                   {SERVICES.map((svc) => (
                     <button
                       key={svc.id}
                       type="button"
                       onClick={() => onZoomService(svc.id)}
-                      className="rounded-lg border border-[#2E083B]/15 bg-[#F3E178]/45 px-2.5 py-2 text-[11px] font-medium text-[#2E083B] transition-colors hover:bg-[#2E083B] hover:text-[#F3E178] cursor-pointer"
+                      className="min-h-[40px] rounded-lg border border-[#2E083B]/15 bg-[#F3E178]/45 px-3 py-2 text-xs font-medium text-[#2E083B] transition-colors hover:bg-[#2E083B] hover:text-[#F3E178] cursor-pointer"
                     >
                       {svc.index}. {svc.shortTitle}
                     </button>
@@ -106,7 +107,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onZoomService, onNavig
               </div>
             </IsolatedEnvelope>
 
-            <p className="mt-5 text-center text-xs font-medium text-[#491C59]">
+            <p className="mt-4 text-center text-xs font-medium text-[#491C59] sm:mt-5">
               {heroEnvelopeOpen
                 ? 'Select any discipline inside the card to zoom in, or click Seal Envelope.'
                 : 'Tap the royal purple wax seal above to unseal the envelope'}
@@ -115,7 +116,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onZoomService, onNavig
         </div>
 
         {/* Full-Width 4-Column Royal Purple Discipline Strip Below Hero Split */}
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-9 grid grid-cols-1 gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
           {SERVICES.map((service) => (
             <button
               key={service.id}

@@ -22,7 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
 
   return (
     <header className="sticky top-0 z-40 border-b border-[#F3E178]/20 bg-[#2E083B]/95 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-8 px-6 py-4">
+      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-4 py-3 sm:gap-8 sm:px-6 sm:py-4">
         {/* Zone 1: Single clean wordmark */}
         <a
           href="#top"
@@ -30,7 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             e.preventDefault();
             handleNav('top');
           }}
-          className="font-display text-2xl font-semibold tracking-tight text-[#F3E178] whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F3E178]"
+          className="font-display text-xl font-semibold tracking-tight text-[#F3E178] whitespace-nowrap shrink-0 sm:text-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F3E178]"
         >
           Roderick &amp; Ellen
         </a>
@@ -64,7 +64,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             onClick={() => setMobileOpen((prev) => !prev)}
             aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={mobileOpen}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#F3E178]/30 text-[#F3E178] md:hidden cursor-pointer focus-visible:outline-2 focus-visible:outline-[#F3E178]"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-[#F3E178]/30 text-[#F3E178] md:hidden cursor-pointer focus-visible:outline-2 focus-visible:outline-[#F3E178]"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -73,25 +73,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
 
       {/* Mobile Menu Drawer */}
       {mobileOpen && (
-        <div className="border-t border-[#F3E178]/15 bg-[#2E083B] px-6 py-4 md:hidden">
-          <nav className="flex flex-col gap-3">
+        <div className="border-t border-[#F3E178]/15 bg-[#2E083B] px-4 py-4 sm:px-6 md:hidden">
+          <nav className="flex flex-col divide-y divide-[#F3E178]/10">
             {navLinks.map((link) => (
               <button
                 key={link.target}
                 type="button"
                 onClick={() => handleNav(link.target)}
-                className="flex min-h-[44px] items-center text-left text-base font-medium text-[#FAF5E6] hover:text-[#F3E178] cursor-pointer"
+                className="flex min-h-[46px] items-center text-left text-base font-medium text-[#FAF5E6] hover:text-[#F3E178] cursor-pointer"
               >
                 {link.label}
               </button>
             ))}
-            <button
-              type="button"
-              onClick={() => handleNav('contact')}
-              className="mt-2 flex min-h-[44px] w-full items-center justify-center rounded-lg bg-[#F3E178] px-4 py-2.5 text-sm font-semibold text-[#2E083B] hover:bg-[#FAF5E6] cursor-pointer"
-            >
-              Start a Project
-            </button>
+            <div className="pt-3">
+              <button
+                type="button"
+                onClick={() => handleNav('contact')}
+                className="flex min-h-[46px] w-full items-center justify-center rounded-lg bg-[#F3E178] px-4 py-2.5 text-sm font-semibold text-[#2E083B] hover:bg-[#FAF5E6] cursor-pointer"
+              >
+                Start a Project
+              </button>
+            </div>
           </nav>
         </div>
       )}
