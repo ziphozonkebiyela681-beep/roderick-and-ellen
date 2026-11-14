@@ -1,0 +1,6 @@
+{
+  "name": "Roderick & Ellen",
+  "description": "Bespoke digital studio crafting personalized digital wedding invitations & photo galleries, signature logo identities, company chatbots & AI agents, and custom business websites.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
